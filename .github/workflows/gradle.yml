@@ -36,5 +36,5 @@ jobs:
 
       #Linting
     - name: Lint client apps
-      run: lintAll
+      run: ./gradlew lintAll
 
