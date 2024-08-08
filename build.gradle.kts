@@ -16,3 +16,8 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_17.toString()
     }
 }
+
+tasks.register("lintAll") {
+    description = "Runs linting on client"
+    dependsOn(subprojects.mapNotNull { it.tasks.findByName("lint") })
+}

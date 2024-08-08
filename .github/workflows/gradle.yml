@@ -34,3 +34,7 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
+      #Linting
+    - name: Lint client apps
+      run: lintAll
+

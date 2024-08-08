@@ -1,3 +1,5 @@
+import com.github.gradle.node.npm.task.NpmTask
+
 plugins {
     kotlin("jvm")
     kotlin("plugin.allopen")
@@ -50,5 +52,13 @@ tasks.register<com.github.gradle.node.npm.task.NpmTask>("startReact") {
 
     inputs.dir("${project.projectDir}/src/main/webapp")
 }
+
+tasks.register<NpmTask>("lint") {
+    dependsOn(tasks.npmInstall)
+    npmCommand.set(listOf("run", "lint"))
+
+    inputs.dir("${project.projectDir}/src/main/webapp")
+}
+
 
 tasks.getByName("processResources").dependsOn(tasks.getByName("buildReact"))
